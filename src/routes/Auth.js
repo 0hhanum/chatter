@@ -1,9 +1,11 @@
+import { authService, createUser, signInEmail } from "firebaseSetting";
 import React, { useState } from "react";
 
 const Auth = () => {
     const [email, setEmail] = useState("");
     // 초기값 "" 으로 useState 호출 -> [value(""), setFunction] 으로 이루어진 배열을 반환
     const [password, setPassword] = useState("");
+    const [newAccount, setNewAccount] = useState(true);
     const onChange = (event) => {
         const { target: { name, value } } = event;
         if (name === "email") {
@@ -13,15 +15,29 @@ const Auth = () => {
         }
     };
     // => value를 intercept 해 setFunction 에 넣는다. => state value 값이 변하고 아래 input 의 value 가 state 값이기 때문에 입력이 가능해진다.왜 이렇게 ?
-    const onSubmit = (e) => {
+    // => submit 하면 새로고침이 되고 react 또한 초기화되기 떄문. 그래서 onSubmit 도 막아준다.
+    const onSubmit = async (e) => {
         e.preventDefault();
-    }
+        try {
+            let data;
+            if (newAccount) {
+                // 계정 생성
+                data = await createUser(authService, email, password);
+            } else {
+                // 로그인
+                data = await signInEmail(authService, email, password);
+            }
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
     return (
         <div>
             <form onSubmit={onSubmit}>
-                <input onChange={onChange} name="email" type="text" placeholder="이메일" required value={email} />
+                <input onChange={onChange} name="email" type="email" placeholder="이메일" required value={email} />
                 <input onChange={onChange} name="password" type="password" placeholder="비밀번호" required value={password} />
-                <input type="submit" value="로그인" />
+                <input type="submit" value={newAccount ? "계정 생성" : "로그인"} />
             </form>
             <div>
                 <button>Google 로 계속하기</button>
