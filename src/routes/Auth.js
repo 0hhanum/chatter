@@ -1,4 +1,4 @@
-import { authService, createUser, signInEmail } from "firebaseSetting";
+import { authService, createUser, signInEmail, googleLogin, githubLogin, popUp } from "firebaseSetting";
 import React, { useState } from "react";
 
 const Auth = () => {
@@ -33,8 +33,25 @@ const Auth = () => {
         }
     };
     const toggleAccount = () => setNewAccount((prev) => !prev);
-    // 이전 값에 반대되는 값을 반환(toggle)
+    // 이전 값에 반대되는 값을 반환(toggle) => setNewAccount 에 반대값이 입력 => newAccount 값 변경
+    const onSocialClick = async (event) => {
+        const { target: { name } } = event;
+        let provider;
+        if (name === "google") {
+            provider = new googleLogin();
+            const result = await popUp(authService, provider);
+            const credential = githubLogin.credentialFromResult(result);
+            console.log(result);
+            console.log(credential);
+        } else if (name === "github") {
+            provider = new githubLogin()
+            const result = await popUp(authService, provider);
+            const credential = githubLogin.credentialFromResult(result);
+            console.log(result);
+            console.log(credential);
+        };
 
+    };
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -45,8 +62,8 @@ const Auth = () => {
             </form>
             <span onClick={toggleAccount}>{newAccount ? "로그인" : "계정 생성"}</span>
             <div>
-                <button>Google 로 계속하기</button>
-                <button>Github 로 계속하기</button>
+                <button onClick={onSocialClick} name="google">Google 로 계속하기</button>
+                <button onClick={onSocialClick} name="github">Github 로 계속하기</button>
             </div>
         </div>
     )
