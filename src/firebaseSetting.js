@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -14,3 +14,4 @@ initializeApp(firebaseConfig);
 export const authService = getAuth();
 export const createUser = createUserWithEmailAndPassword;
 export const signInEmail = signInWithEmailAndPassword;
+export const checkAuthState = onAuthStateChanged;

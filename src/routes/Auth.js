@@ -6,6 +6,7 @@ const Auth = () => {
     // 초기값 "" 으로 useState 호출 -> [value(""), setFunction] 으로 이루어진 배열을 반환
     const [password, setPassword] = useState("");
     const [newAccount, setNewAccount] = useState(true);
+    const [error, setError] = useState("");
     const onChange = (event) => {
         const { target: { name, value } } = event;
         if (name === "email") {
@@ -27,18 +28,22 @@ const Auth = () => {
                 // 로그인
                 data = await signInEmail(authService, email, password);
             }
-            console.log(data);
         } catch (error) {
-            console.log(error);
+            setError(error.message);
         }
     };
+    const toggleAccount = () => setNewAccount((prev) => !prev);
+    // 이전 값에 반대되는 값을 반환(toggle)
+
     return (
         <div>
             <form onSubmit={onSubmit}>
                 <input onChange={onChange} name="email" type="email" placeholder="이메일" required value={email} />
                 <input onChange={onChange} name="password" type="password" placeholder="비밀번호" required value={password} />
                 <input type="submit" value={newAccount ? "계정 생성" : "로그인"} />
+                {error}
             </form>
+            <span onClick={toggleAccount}>{newAccount ? "로그인" : "계정 생성"}</span>
             <div>
                 <button>Google 로 계속하기</button>
                 <button>Github 로 계속하기</button>
