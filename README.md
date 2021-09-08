@@ -4,11 +4,13 @@
 ```
 - React
 - Firebase
-    - authentication
+    - user authentication
+    - git, google auth provider
 - react-router-dom
 ```
 
 ### Features
 ```
 - Sign in & Sign up using firebase
+- Social login (Google, Github)
 ```

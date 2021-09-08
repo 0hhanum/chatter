@@ -5,7 +5,7 @@ const Auth = () => {
     const [email, setEmail] = useState("");
     // 초기값 "" 으로 useState 호출 -> [value(""), setFunction] 으로 이루어진 배열을 반환
     const [password, setPassword] = useState("");
-    const [newAccount, setNewAccount] = useState(true);
+    const [newAccount, setNewAccount] = useState(false);
     const [error, setError] = useState("");
     const onChange = (event) => {
         const { target: { name, value } } = event;
