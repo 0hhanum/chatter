@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
-import "firebase/database";
+import * as firestore from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -20,3 +20,5 @@ export const githubLogin = GithubAuthProvider;
 export const googleLogin = GoogleAuthProvider;
 export const popUp = signInWithPopup;
 export const logOut = signOut;
+export const dbService = firestore;
+export const db = firestore.getFirestore();

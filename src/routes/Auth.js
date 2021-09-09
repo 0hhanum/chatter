@@ -41,14 +41,10 @@ const Auth = () => {
             provider = new googleLogin();
             const result = await popUp(authService, provider);
             const credential = githubLogin.credentialFromResult(result);
-            console.log(result);
-            console.log(credential);
         } else if (name === "github") {
             provider = new githubLogin()
             const result = await popUp(authService, provider);
             const credential = githubLogin.credentialFromResult(result);
-            console.log(result);
-            console.log(credential);
         };
 
     };
