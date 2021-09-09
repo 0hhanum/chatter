@@ -4,8 +4,9 @@
 ```
 - React
 - Firebase
-    - user authentication
-    - git, google auth provider
+    - User authentication
+    - Git, google auth provider
+    - Firestore Database
 - react-router-dom
 ```
 
