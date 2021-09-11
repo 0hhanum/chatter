@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
 import { dbService, db } from "firebaseSetting";
 
-const Home = () => {
+const Home = ({ userObj }) => {
     const [chat, setChat] = useState("");
     const [error, setError] = useState("");
     const [chats, setChats] = useState([]);
@@ -28,8 +28,9 @@ const Home = () => {
         event.preventDefault();
         try {
             const doc = await dbService.addDoc(dbService.collection(db, "chats"), {
-                chat,
+                text: chat,
                 createAt: Date.now(),
+                creatorId: userObj.uid,
             });
             setChat("");
         } catch (e) {
@@ -49,7 +50,7 @@ const Home = () => {
             {error}
             <div>
                 {chats.map(chat => <div key={chat.id}>
-                    <h4>{chat.chat}</h4>
+                    <h4>{chat.text}</h4>
                 </div>
                 )}
             </div>
