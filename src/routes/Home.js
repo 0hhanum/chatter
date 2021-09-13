@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
 import { dbService, db } from "firebaseSetting";
-import { orderBy, QuerySnapshot } from "@firebase/firestore";
+import Chat from "../components/Chat.js";
 
 const Home = ({ userObj }) => {
     const [chat, setChat] = useState("");
@@ -22,7 +22,7 @@ const Home = ({ userObj }) => {
     // };
     useEffect(() => {
         // getChats();
-        const q = dbService.query(dbService.collection(db, "chats"), orderBy("createdAt"));
+        const q = dbService.query(dbService.collection(db, "chats"), dbService.orderBy("createdAt"));
         const unsubscribe = dbService.onSnapshot(q, (querySnapshot) => {
             const chatsArray = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
             setChats(chatsArray);
@@ -56,9 +56,9 @@ const Home = ({ userObj }) => {
             </form>
             {error}
             <div>
-                {chats.map(chat => <div key={chat.id}>
-                    <h4>{chat.text}</h4>
-                </div>
+                {chats.map((chat) => (
+                    <Chat key={chat.id} chatObj={chat} isOwner={chat.creatorId === userObj.uid} />
+                )
                 )}
             </div>
         </div>
