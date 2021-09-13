@@ -3,6 +3,7 @@
 ### Using...
 ```
 - React
+    - Hooks
 - Firebase
     - User authentication
     - Git, google auth provider
@@ -14,4 +15,5 @@
 ```
 - Sign in & Sign up using firebase
 - Social login (Google, Github)
+- CRUD chat
 ```
