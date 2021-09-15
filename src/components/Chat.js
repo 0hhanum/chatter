@@ -22,7 +22,6 @@ const Chat = ({ chatObj, isOwner }) => {
     // 이전 value 와 반대 value 로 토글.
     const onSubmit = async (event) => {
         event.preventDefault();
-        console.log(chatObj, newChat);
         const document = dbService.doc(db, "chats", chatObj.id);
         await dbService.updateDoc(document, {
             text: newChat,
@@ -41,11 +40,15 @@ const Chat = ({ chatObj, isOwner }) => {
         <div>
             {editing ? (
                 <>
-                    <form onSubmit={onSubmit}>
-                        <input type="text" placeholder="수정중" value={newChat} onChange={onChange} required />
-                        <input type="submit" value="수정하기" />
-                    </form>
-                    <button onClick={toggleEditing}>취소</button>
+                    {isOwner &&
+                        <>
+                            <form onSubmit={onSubmit}>
+                                <input type="text" placeholder="수정중" value={newChat} onChange={onChange} required />
+                                <input type="submit" value="수정하기" />
+                            </form>
+                            <button onClick={toggleEditing}>취소</button>
+                        </>
+                    }
                 </>
             )
                 : (
