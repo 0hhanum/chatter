@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useState } from "react/cjs/react.development";
+import { useState, useRef } from "react/cjs/react.development";
 import { dbService, db } from "firebaseSetting";
 import Chat from "../components/Chat.js";
 
@@ -8,6 +8,7 @@ const Home = ({ userObj }) => {
     const [error, setError] = useState("");
     const [chats, setChats] = useState([]);
     const [attachment, setAttachment] = useState();
+    const fileInput = useRef(); // 취소 눌렀을 때 input 내 value 지우기 위해 선언.
 
     // const getChats = async () => {
     //     const DBchats = await dbService.getDocs(dbService.collection(db, "chats"));
@@ -53,25 +54,35 @@ const Home = ({ userObj }) => {
         const { target: { files } } = event;
         const theFile = files[0];
         const reader = new FileReader();
+        reader.readAsDataURL(theFile);
+        // reader 가 뭘 읽을건지 설정.
         reader.onloadend = (finishedEvent) => {
-            // reader 에 file load 가 완료되면 실행 (eventListener 개념)
-            console.log(finishedEvent);
+            // reader 에 file load 가 완료되면 실행 ( eventListener 개념 )
             const {
                 currentTarget: { result },
             } = finishedEvent;
             setAttachment(result);
         };
-        reader.readAsDataURL(theFile);
-        //onloadend 에서 load 가 완료되면 실행 (?)
 
     };
+
+    const onClearAttachmentClick = () => {
+        setAttachment(null);
+        fileInput.current.value = null;
+    };
+
     return (
         <div>
             <form onSubmit={onSubmit}>
                 <input value={chat} onChange={onChange} type="text" placeholder="임금님 귀는 당나귀 귀" max={120} />
-                <input type="file" onChange={onFileChange} accept="image/*" />
+                <input type="file" onChange={onFileChange} accept="image/*" ref={fileInput} />
                 <input type="submit" value="전송" />
-                {attachment && <img src={attachment} width="50px" />}
+                {attachment && (
+                    <div>
+                        <img src={attachment} width="100px" />
+                        <button onClick={onClearAttachmentClick}>취소</button>
+                    </div>
+                )}
             </form>
             {error}
             <div>
