@@ -7,6 +7,7 @@ const Home = ({ userObj }) => {
     const [chat, setChat] = useState("");
     const [error, setError] = useState("");
     const [chats, setChats] = useState([]);
+    const [attachment, setAttachment] = useState();
 
     // const getChats = async () => {
     //     const DBchats = await dbService.getDocs(dbService.collection(db, "chats"));
@@ -48,11 +49,29 @@ const Home = ({ userObj }) => {
         const { target: { value } } = event;
         setChat(value);
     };
+    const onFileChange = (event) => {
+        const { target: { files } } = event;
+        const theFile = files[0];
+        const reader = new FileReader();
+        reader.onloadend = (finishedEvent) => {
+            // reader 에 file load 가 완료되면 실행 (eventListener 개념)
+            console.log(finishedEvent);
+            const {
+                currentTarget: { result },
+            } = finishedEvent;
+            setAttachment(result);
+        };
+        reader.readAsDataURL(theFile);
+        //onloadend 에서 load 가 완료되면 실행 (?)
+
+    };
     return (
         <div>
             <form onSubmit={onSubmit}>
                 <input value={chat} onChange={onChange} type="text" placeholder="임금님 귀는 당나귀 귀" max={120} />
+                <input type="file" onChange={onFileChange} accept="image/*" />
                 <input type="submit" value="전송" />
+                {attachment && <img src={attachment} width="50px" />}
             </form>
             {error}
             <div>
