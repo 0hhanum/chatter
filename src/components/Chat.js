@@ -54,6 +54,7 @@ const Chat = ({ chatObj, isOwner }) => {
                 : (
                     <>
                         <h4>{chatObj.text}</h4>
+                        {chatObj.attachmentUrl && <img src={chatObj.attachmentUrl} width="50px" />}
                         {
                             isOwner && (
                                 <>
