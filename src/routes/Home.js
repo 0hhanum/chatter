@@ -1,13 +1,17 @@
+import { v4 as uuidv4 } from "uuid"; // 사진 주소 랜덤 아이디 생성
 import React, { useEffect } from "react";
 import { useState, useRef } from "react/cjs/react.development";
-import { dbService, db } from "firebaseSetting";
+import { dbService, db, storageService } from "firebaseSetting";
 import Chat from "../components/Chat.js";
+import { ref, uploadString } from "firebase/storage";
 
 const Home = ({ userObj }) => {
     const [chat, setChat] = useState("");
     const [error, setError] = useState("");
     const [chats, setChats] = useState([]);
     const [attachment, setAttachment] = useState();
+    const [file, setFile] = useState();
+
     const fileInput = useRef(); // 취소 눌렀을 때 input 내 value 지우기 위해 선언.
 
     // const getChats = async () => {
@@ -35,16 +39,21 @@ const Home = ({ userObj }) => {
     // 비워두는 이유는 함수를 처음 마운트 되었을 때 한번만 실행하고 싶기 떄문. (onSnapshot 은 listener 개념)
     const onSubmit = async (event) => {
         event.preventDefault();
-        try {
-            const doc = await dbService.addDoc(dbService.collection(db, "chats"), {
-                text: chat,
-                createdAt: Date.now(),
-                creatorId: userObj.uid,
-            });
-            setChat("");
-        } catch (e) {
-            setError(e.message);
-        }
+        const fileRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
+        const response = await uploadString(fileRef, attachment, "data_url");
+        // reference 만들고 주소 지정 후 파일을 담아 보냄.. 
+        // attachment 엔 fileChange 에서 setAttachment 로 파일이 들어가있음.
+
+        // try {
+        //     const doc = await dbService.addDoc(dbService.collection(db, "chats"), {
+        //         text: chat,
+        //         createdAt: Date.now(),
+        //         creatorId: userObj.uid,
+        //     });
+        //     setChat("");
+        // } catch (e) {
+        //     setError(e.message);
+        // }
     };
     const onChange = (event) => {
         const { target: { value } } = event;

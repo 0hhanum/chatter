@@ -11,6 +11,7 @@
     - Firebase Storage
 - react-router-dom
 - FileReader API
+- uuid (for each picture's random id)
 ```
 
 ### Features
