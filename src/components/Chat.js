@@ -1,4 +1,4 @@
-import { db, dbService } from "firebaseSetting";
+import { db, dbService, delObject, reference, storageService } from "firebaseSetting";
 import React from "react";
 import { useState } from "react/cjs/react.development";
 
@@ -9,10 +9,14 @@ const Chat = ({ chatObj, isOwner }) => {
     const deleteDoc = async (id) => {
         await dbService.deleteDoc(dbService.doc(db, "chats", id));
     }
+    const deleteAttachment = async (chatObj) => {
+        await delObject(reference(storageService, chatObj.attachmentUrl))
+    };
     const onDeleteClick = () => {
         const ok = window.confirm("삭제할까용?");
         if (ok) {
             deleteDoc(chatObj.id);
+            if (chatObj.attachmentUrl) deleteAttachment(chatObj);
         } else {
             //
         };
@@ -29,6 +33,7 @@ const Chat = ({ chatObj, isOwner }) => {
         });
         setEditing(false);
     };
+
     const onChange = (event) => {
         const {
             target: { value }

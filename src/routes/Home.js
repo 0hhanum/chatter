@@ -10,7 +10,6 @@ const Home = ({ userObj }) => {
     const [error, setError] = useState("");
     const [chats, setChats] = useState([]);
     const [attachment, setAttachment] = useState("");
-    const [file, setFile] = useState();
 
     const fileInput = useRef(); // 취소 눌렀을 때 input 내 value 지우기 위해 선언.
 

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getStorage } from "firebase/storage";
+import { getStorage, deleteObject, ref } from "firebase/storage";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import * as firestore from "firebase/firestore";
 
@@ -24,3 +24,5 @@ export const logOut = signOut;
 export const dbService = firestore;
 export const db = firestore.getFirestore();
 export const storageService = getStorage();
+export const delObject = deleteObject;
+export const reference = ref;
