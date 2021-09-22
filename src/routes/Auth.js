@@ -1,4 +1,4 @@
-import { authService, createUser, signInEmail, googleLogin, githubLogin, popUp } from "firebaseSetting";
+import { authService, createUser, signInEmail, googleLogin, githubLogin, popUp, updateUserProfile } from "firebaseSetting";
 import React, { useState } from "react";
 
 const Auth = () => {
@@ -24,6 +24,7 @@ const Auth = () => {
             if (newAccount) {
                 // 계정 생성
                 data = await createUser(authService, email, password);
+                await signInEmail(authService, email, password);
             } else {
                 // 로그인
                 data = await signInEmail(authService, email, password);

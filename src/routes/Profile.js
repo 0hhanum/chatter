@@ -1,6 +1,6 @@
 import { db, dbService, updateUserProfile } from "firebaseSetting";
 import React, { useEffect } from "react";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import Chat from "components/Chat";
 
 const Profile = ({ userObj }) => {
