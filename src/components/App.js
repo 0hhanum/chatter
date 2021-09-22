@@ -22,16 +22,32 @@ function App() {
           })
         }
         // setIsLoggedIn(true);
-        setUserObj(user);
+        setUserObj({
+          displayName: user.displayName,
+          uid: user.uid,
+          updateProfile: (args) => updateUserProfile(user, args), //updateUserProfile 메서드를 오브젝트에 담아 다루기.
+        });
+        // 그냥 user 를 줄 수 있지만 react 는 거대한 object 가 변경되었을 때 변화를 판단해 재 render 하는 것에 약함.
+        // 필요한 요소만 담아 object 를 축소.
       }
       else { // login 후 logout 했을 경우
         setUserObj(null);
       }
       setInit(true);
     });
-  });
+  }, []);
+  const refreshUser = () => {
+    const user = authService.currentUser;
+    setUserObj(
+      {
+        displayName: user.displayName,
+        uid: user.uid,
+        updateProfile: (args) => updateUserProfile(user, args),
+      }
+    )
+  };
   return <>
-    {init ? < AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj} /> : "로딩중..."}
+    {init ? < AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj} /> : "로딩중..."}
     <footer>&copy; H A N U M {new Date().getFullYear()}</footer>
   </>;
 

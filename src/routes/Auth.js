@@ -1,4 +1,4 @@
-import { authService, createUser, signInEmail, googleLogin, githubLogin, popUp, updateUserProfile } from "firebaseSetting";
+import { authService, createUser, signInEmail, googleLogin, githubLogin, popUp } from "firebaseSetting";
 import React, { useState } from "react";
 
 const Auth = () => {

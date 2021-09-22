@@ -1,9 +1,9 @@
-import { db, dbService, updateUserProfile } from "firebaseSetting";
+import { db, dbService, authService, updateUserProfile } from "firebaseSetting";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import Chat from "components/Chat";
 
-const Profile = ({ userObj }) => {
+const Profile = ({ refreshUser, userObj }) => {
     const [chats, setChats] = useState([]);
     const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
 
@@ -15,7 +15,7 @@ const Profile = ({ userObj }) => {
     };
     useEffect(() => {
         getMyChats();
-    }, []);
+    });
     const onChange = (event) => {
         const {
             target: { value }
@@ -25,8 +25,12 @@ const Profile = ({ userObj }) => {
     const onSubmit = async (event) => {
         event.preventDefault();
         if (userObj.displayName !== newDisplayName && newDisplayName) {
-            await updateUserProfile(userObj, { displayName: newDisplayName });
+            // await updateUserProfile(authService.currentUser, { displayName: newDisplayName });
+            await userObj.updateProfile({
+                displayName: newDisplayName,
+            })
         };
+        refreshUser();
         setNewDisplayName("");
     };
     return (
