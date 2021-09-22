@@ -9,7 +9,7 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
     // && => Navigation 이 존재하려면 isLoggedIn == true 여야함
     return (
         <Router>
-            {isLoggedIn && <Navigation />}
+            {isLoggedIn && <Navigation userObj={userObj} />}
             <Switch>
                 {isLoggedIn
                     ?
