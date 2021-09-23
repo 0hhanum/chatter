@@ -48,7 +48,7 @@ function App() {
   };
   return <>
     {init ? < AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj} /> : "로딩중..."}
-    <footer>&copy; H A N U M {new Date().getFullYear()}</footer>
+    <footer className="footer">&copy; H A N U M {new Date().getFullYear()}</footer>
   </>;
 
 }

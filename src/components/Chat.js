@@ -50,7 +50,7 @@ const Chat = ({ chatObj, isOwner }) => {
                     {isOwner &&
                         <>
                             <form onSubmit={onSubmit} className="container chatEdit">
-                                <input type="text" placeholder="수정중" value={newChat} onChange={onChange} required autoFocus className="formInput" />
+                                <input type="text" placeholder="수정중" value={newChat} onChange={onChange} required autoFocus className="formInput chat__input" />
                                 <input type="submit" value="수정하기" className="formBtn" />
                             </form>
                             <button onClick={toggleEditing} className="formBtn cancelBtn">취소</button>

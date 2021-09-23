@@ -70,16 +70,16 @@ const ChatForm = ({ userObj }) => {
                 <input type="submit" value="&rarr;" className="factoryInput__arrow" />
             </div>
             <label htmlFor="attach-file" className="factoryInput__label">
-                <span>사진 추가하기</span>
-                <FontAwesomeIcon icon={faPlus} />
+                <span className="addAttach">사진 추가하기</span>
+                <FontAwesomeIcon icon={faPlus} color={"white"} />
             </label>
             <input id="attach-file" type="file" onChange={onFileChange} accept="image/*" ref={fileInput} style={{ opacity: 0, }} />
             {attachment && (
                 <div className="factoryForm__attachment">
                     <img style={{ backgroundImage: attachment }} src={attachment} width="100px" />
                     <div className="factoryForm__clear" onClick={onClearAttachmentClick}>
-                        <span>취소</span>
-                        <FontAwesomeIcon icon={faTimes} />
+                        <span className="addAttach">취소</span>
+                        <FontAwesomeIcon icon={faTimes} color={"white"} />
                     </div>
                 </div>
             )}

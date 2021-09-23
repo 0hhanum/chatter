@@ -8,7 +8,7 @@ import {
     faGoogle,
     faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import { faComment, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faComment, faPizzaSlice, faPoo, faPoop, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Auth = () => {
     const onSocialClick = async (event) => {
@@ -27,15 +27,15 @@ const Auth = () => {
     return (
         <div className="authContainer">
             <FontAwesomeIcon
-                icon={faComment}
-                color={"#00762a"}
-                size="3x"
-                style={{ marginBottom: 30 }}
+                icon={faPoo}
+                color={"#846d00"}
+                size="5x"
+                style={{ marginBottom: 60 }}
             />
             <AuthForm />
             <div className="authBtns">
-                <button className="authBtn" onClick={onSocialClick} name="google">Google 로 계속하기 <FontAwesomeIcon icon={faGoogle} /></button>
-                <button className="authBtn" onClick={onSocialClick} name="github">Github 로 계속하기 <FontAwesomeIcon icon={faGithub} /></button>
+                <button className="authBtn" onClick={onSocialClick} name="google">Google 로 계속하기 <span className="socialIcon"> <FontAwesomeIcon icon={faGoogle} color={"orange"} /></span></button>
+                <button className="authBtn" onClick={onSocialClick} name="github">Github 로 계속하기 <span className="socialIcon"> <FontAwesomeIcon icon={faGithub} /></span></button>
             </div>
         </div>
     )

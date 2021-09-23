@@ -20,5 +20,5 @@
 - Social login (Google, Github)
 - CRUD chat
 - Able to upload image
-
+- Realtime update (chats, user profile ...)
 ```

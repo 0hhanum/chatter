@@ -37,7 +37,7 @@ const Profile = ({ refreshUser, userObj }) => {
         <div className="container">
             <form onSubmit={onSubmit} className="profileForm">
                 <input type="text" placeholder={newDisplayName} onChange={onChange} value={newDisplayName} autoFocus className="formInput" />
-                <input type="submit" value="이름 변경" className="formBtn" style={{ marginTop: 10 }} />
+                <input type="submit" value="이름 변경" className="formBtn profileFormBtn" style={{ marginTop: 10 }} />
             </form>
             <div>
                 {chats.map((chat) => (

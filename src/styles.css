@@ -21,6 +21,8 @@ body {
 button {
   background-color: white;
   color: black;
+  border: none;
+  outline: none;;
 }
 
 a {
@@ -46,9 +48,8 @@ form {
 
 .formInput {
   width: 100%;
-  padding: 10px 20px;
+  padding: 13px 20px;
   border-radius: 20px;
-  border: 1px solid black;
   text-align: center;
   background-color: white;
   color: black;
@@ -61,13 +62,16 @@ form {
   text-align: center;
   color: white;
   border-radius: 20px;
-  background-color: #04aaff;
+  background-color: #504e45;
   cursor: pointer;
 }
 
 .cancelBtn {
   cursor: pointer;
   background-color: tomato;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
 }
 
 /* Profile Page */
@@ -78,6 +82,7 @@ form {
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
 }
 
 .logOut {
@@ -104,18 +109,20 @@ form {
 .factoryInput__input {
   flex-grow: 1;
   height: 40px;
-  padding: 0px 20px;
+  padding: 10px 30px;
   color: white;
-  border: 1px solid #04aaff;
   border-radius: 20px;
   font-weight: 500;
   font-size: 12px;
+  background-color: #b77206;
 }
-
+.factoryInput__input::placeholder{
+  color: wheat;
+}
 .factoryInput__arrow {
   position: absolute;
   right: 0;
-  background-color: #04aaff;
+  background-color: #855b19;
   height: 40px;
   width: 40px;
   padding: 10px 0px;
@@ -125,7 +132,7 @@ form {
 }
 
 .factoryInput__label {
-  color: #04aaff;
+  color: #846d00;
   cursor: pointer;
 }
 
@@ -147,7 +154,7 @@ form {
 }
 
 .factoryForm__clear {
-  color: #04aaff;
+  color: #846d00;
   cursor: pointer;
   text-align: center;
 }
@@ -163,19 +170,21 @@ form {
   cursor: pointer;
   margin-top: 15px;
   margin-bottom: 5px;
+  padding: 10px 20px;
+  border: none;
 }
 
 .chat {
   margin-bottom: 20px;
-  background-color: white;
+  background-color: #846d00;
   width: 100%;
   max-width: 320px;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 13px 40px;
+  border-radius: 5px;
   position: relative;
   display: flex;
   flex-direction: column;
-  color: rgba(0, 0, 0, 0.8);
+  color: wheat;
 }
 
 .chat h4 {
@@ -183,13 +192,12 @@ form {
 }
 
 .chat img {
-  right: -10px;
-  top: 20px;
+  right: -60px;
+  bottom: -5px;
   position: absolute;
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  margin-top: 10px;
 }
 
 .chat__actions {
@@ -240,7 +248,7 @@ form {
 .authInput {
   max-width: 320px;
   width: 100%;
-  padding: 10px;
+  padding: 10px 30px;
   border-radius: 30px;
   background-color: rgba(255, 255, 255, 1);
   margin-bottom: 10px;
@@ -250,10 +258,11 @@ form {
 
 .authSubmit {
   text-align: center;
-  background: #04aaff;
+  background: #846d00;
   color: white;
-  margin-top: 10;
+  margin-top: 20px;
   cursor: pointer;
+  padding: 13px;
 }
 
 .authError {
@@ -264,11 +273,28 @@ form {
 }
 
 .authSwitch {
-  color: #04aaff;
+  color: #846d00;
   cursor: pointer;
   margin-top: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   display: block;
   font-size: 12px;
   text-decoration: underline;
+}
+
+.footer{
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+}
+.socialIcon{
+  margin-left: 3px;
+}
+
+.profileFormBtn{
+  padding: 13px 20px;
+  margin-top: 20px;
+}
+.addAttach{
+  color: white;
 }
