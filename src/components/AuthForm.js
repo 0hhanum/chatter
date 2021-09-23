@@ -37,13 +37,13 @@ const AuthForm = () => {
     // 이전 값에 반대되는 값을 반환(toggle) => setNewAccount 에 반대값이 입력 => newAccount 값 변경
     return (
         <>
-            <form onSubmit={onSubmit}>
-                <input onChange={onChange} name="email" type="email" placeholder="이메일" required value={email} />
-                <input onChange={onChange} name="password" type="password" placeholder="비밀번호" required value={password} />
-                <input type="submit" value={newAccount ? "계정 생성" : "로그인"} />
-                {error}
+            <form onSubmit={onSubmit} className="container">
+                <input onChange={onChange} name="email" type="email" placeholder="이메일" required value={email} className="authInput" />
+                <input onChange={onChange} name="password" type="password" placeholder="비밀번호" required value={password} className="authInput" />
+                <input type="submit" value={newAccount ? "계정 생성" : "로그인"} className="authInput authSubmit" />
+                {error && <span className="authError">{error}</span>}
             </form>
-            <span onClick={toggleAccount}>{newAccount ? "로그인" : "계정 생성"}</span>
+            <span onClick={toggleAccount} className="authSwitch">{newAccount ? "로그인" : "계정 생성"}</span>
         </>
     )
 };

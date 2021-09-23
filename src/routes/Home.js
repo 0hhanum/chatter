@@ -31,9 +31,9 @@ const Home = ({ userObj }) => {
     // 비워두는 이유는 함수를 처음 마운트 되었을 때 한번만 실행하고 싶기 떄문. (onSnapshot 은 listener 개념)
 
     return (
-        <div>
+        <div className="container">
             <ChatForm userObj={userObj} />
-            <div>
+            <div style={{ marginTop: 30 }}>
                 {chats.map((chat) => (
                     <Chat key={chat.id} chatObj={chat} isOwner={chat.creatorId === userObj.uid} />
                 )

@@ -34,19 +34,18 @@ const Profile = ({ refreshUser, userObj }) => {
         setNewDisplayName("");
     };
     return (
-        <>
-            <form onSubmit={onSubmit}>
-                <input type="text" placeholder={newDisplayName} onChange={onChange} value={newDisplayName} />
-                <input type="submit" value="프로필 변경" />
+        <div className="container">
+            <form onSubmit={onSubmit} className="profileForm">
+                <input type="text" placeholder={newDisplayName} onChange={onChange} value={newDisplayName} autoFocus className="formInput" />
+                <input type="submit" value="이름 변경" className="formBtn" style={{ marginTop: 10 }} />
             </form>
-            <span>Profile</span>
             <div>
                 {chats.map((chat) => (
                     <Chat key={chat.id} chatObj={chat} isOwner={chat.creatorId === userObj.uid} />
                 )
                 )}
             </div>
-        </>
+        </div>
     )
 };
 

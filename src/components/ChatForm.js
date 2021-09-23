@@ -4,6 +4,8 @@ import { useRef } from "react/cjs/react.development";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import { storageService, dbService, db } from "firebaseSetting";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const ChatForm = ({ userObj }) => {
 
@@ -61,15 +63,24 @@ const ChatForm = ({ userObj }) => {
         fileInput.current.value = null;
     };
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className="factoryForm">
             {error}
-            <input value={chat} onChange={onChange} type="text" placeholder="임금님 귀는 당나귀 귀" max={120} />
-            <input type="file" onChange={onFileChange} accept="image/*" ref={fileInput} />
-            <input type="submit" value="전송" />
+            <div className="factoryInput__container">
+                <input value={chat} onChange={onChange} type="text" placeholder="임금님 귀는 당나귀 귀" max={120} className="factoryInput__input" />
+                <input type="submit" value="&rarr;" className="factoryInput__arrow" />
+            </div>
+            <label htmlFor="attach-file" className="factoryInput__label">
+                <span>사진 추가하기</span>
+                <FontAwesomeIcon icon={faPlus} />
+            </label>
+            <input id="attach-file" type="file" onChange={onFileChange} accept="image/*" ref={fileInput} style={{ opacity: 0, }} />
             {attachment && (
-                <div>
-                    <img src={attachment} width="100px" />
-                    <button onClick={onClearAttachmentClick}>취소</button>
+                <div className="factoryForm__attachment">
+                    <img style={{ backgroundImage: attachment }} src={attachment} width="100px" />
+                    <div className="factoryForm__clear" onClick={onClearAttachmentClick}>
+                        <span>취소</span>
+                        <FontAwesomeIcon icon={faTimes} />
+                    </div>
                 </div>
             )}
         </form>

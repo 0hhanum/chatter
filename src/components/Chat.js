@@ -1,6 +1,8 @@
 import { db, dbService, delObject, reference, storageService } from "firebaseSetting";
 import React from "react";
 import { useState } from "react/cjs/react.development";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Chat = ({ chatObj, isOwner }) => {
     const [editing, setEditing] = useState(false);
@@ -42,16 +44,16 @@ const Chat = ({ chatObj, isOwner }) => {
     };
 
     return (
-        <div>
+        <div className="chat">
             {editing ? (
                 <>
                     {isOwner &&
                         <>
-                            <form onSubmit={onSubmit}>
-                                <input type="text" placeholder="수정중" value={newChat} onChange={onChange} required />
-                                <input type="submit" value="수정하기" />
+                            <form onSubmit={onSubmit} className="container chatEdit">
+                                <input type="text" placeholder="수정중" value={newChat} onChange={onChange} required autoFocus className="formInput" />
+                                <input type="submit" value="수정하기" className="formBtn" />
                             </form>
-                            <button onClick={toggleEditing}>취소</button>
+                            <button onClick={toggleEditing} className="formBtn cancelBtn">취소</button>
                         </>
                     }
                 </>
@@ -59,13 +61,13 @@ const Chat = ({ chatObj, isOwner }) => {
                 : (
                     <>
                         <h4>{chatObj.text}</h4>
-                        {chatObj.attachmentUrl && <img src={chatObj.attachmentUrl} width="50px" />}
+                        {chatObj.attachmentUrl && <img src={chatObj.attachmentUrl} />}
                         {
                             isOwner && (
-                                <>
-                                    <button onClick={onDeleteClick}>삭제</button>
-                                    <button onClick={toggleEditing}>수정</button>
-                                </>
+                                <div className="chat__actions">
+                                    <span onClick={onDeleteClick}><FontAwesomeIcon icon={faTrash} /></span>
+                                    <span onClick={toggleEditing}> <FontAwesomeIcon icon={faPencilAlt} /></span>
+                                </div>
                             )
                         }
                     </>
