@@ -27,7 +27,7 @@ function App() {
           uid: user.uid,
           updateProfile: (args) => updateUserProfile(user, args), //updateUserProfile 메서드를 오브젝트에 담아 다루기.
         });
-        // 그냥 user 를 줄 수 있지만 react 는 거대한 object 가 변경되었을 때 변화를 판단해 재 render 하는 것에 약함.
+        // 그냥 user 를 줄 수 있지만 react 는 거대한 object 가 변경되었을 때 변화를 판단해 재 render 하는 것에 약함. => shallow comparison 을 함.
         // 필요한 요소만 담아 object 를 축소.
       }
       else { // login 후 logout 했을 경우
@@ -36,7 +36,7 @@ function App() {
       setInit(true);
     });
   }, []);
-  const refreshUser = () => {
+  const refreshUser = () => { // react 내 업데이트를 위한 userObj 업데이트 메서드
     const user = authService.currentUser;
     setUserObj(
       {
