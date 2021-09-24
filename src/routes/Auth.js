@@ -4,11 +4,10 @@ import AuthForm from "../components/AuthForm";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faTwitter,
     faGoogle,
     faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import { faComment, faPizzaSlice, faPoo, faPoop, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faPoo } from "@fortawesome/free-solid-svg-icons";
 
 const Auth = () => {
     const onSocialClick = async (event) => {

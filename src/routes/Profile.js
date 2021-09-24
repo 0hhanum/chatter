@@ -1,4 +1,4 @@
-import { db, dbService, authService, updateUserProfile } from "firebaseSetting";
+import { db, dbService } from "firebaseSetting";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import Chat from "components/Chat";

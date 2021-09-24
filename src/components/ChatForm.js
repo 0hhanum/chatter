@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { v4 as uuidv4 } from "uuid"; // 사진 주소 랜덤 아이디 생성
-import { useRef } from "react/cjs/react.development";
+import { useRef } from "react";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import { storageService, dbService, db } from "firebaseSetting";
 
