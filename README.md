@@ -1,5 +1,6 @@
 ## Anonymous Social network service project
-
+    
+    익명으로 하고싶었던 말을 한 마디씩 외칠수 있는 소셜 네트워크 서비스입니다.
 ### Service Link => https://0hhanum.github.io/chatter
 
 ### Using...
