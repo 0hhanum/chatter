@@ -39,8 +39,9 @@ const Navigation = ({ userObj }) => <nav>
                 top: "30px",
                 right: "30px",
             }}
-                href="#" onClick={logoutFunction}>
-                <FontAwesomeIcon icon={faTimes} color={"#422903"} size="2x" />
+                href="#" onClick={logoutFunction} class="logout">
+                {/* <FontAwesomeIcon icon={faTimes} color={"#422903"} size="2x" /> */}
+                LOGOUT
             </a>
         </li>
     </ul>

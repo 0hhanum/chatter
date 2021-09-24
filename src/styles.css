@@ -108,7 +108,7 @@ form {
 
 .factoryInput__input {
   flex-grow: 1;
-  height: 40px;
+  /* height: 40px; */
   padding: 10px 30px;
   color: white;
   border-radius: 20px;
@@ -123,12 +123,13 @@ form {
   position: absolute;
   right: 0;
   background-color: #855b19;
-  height: 40px;
+  /* height: 40px; */
   width: 40px;
   padding: 10px 0px;
   text-align: center;
   border-radius: 20px;
   color: white;
+  cursor: pointer;
 }
 
 .factoryInput__label {
@@ -247,7 +248,7 @@ form {
 
 .authInput {
   max-width: 320px;
-  width: 100%;
+  /* width: 100%; */
   padding: 10px 30px;
   border-radius: 30px;
   background-color: rgba(255, 255, 255, 1);
@@ -297,4 +298,7 @@ form {
 }
 .addAttach{
   color: white;
+}
+.logout{
+  color: #422903;
 }

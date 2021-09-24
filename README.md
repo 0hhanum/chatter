@@ -1,6 +1,6 @@
-## Social network service project
+## Anonymous Social network service project
 
-## Service Link => https://0hhanum.github.io/chatter
+### Service Link => https://0hhanum.github.io/chatter
 
 ### Using...
 ```
