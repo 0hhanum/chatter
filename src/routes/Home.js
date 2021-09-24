@@ -20,7 +20,7 @@ const Home = ({ userObj }) => {
     // };
     useEffect(() => {
         // getChats();
-        const q = dbService.query(dbService.collection(db, "chats"), dbService.orderBy("createdAt"));
+        const q = dbService.query(dbService.collection(db, "chats"), dbService.orderBy("createdAt", "desc"));
         const unsubscribe = dbService.onSnapshot(q, (querySnapshot) => {
             const chatsArray = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
             setChats(chatsArray);

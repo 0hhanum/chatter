@@ -41,7 +41,7 @@ const Navigation = ({ userObj }) => <nav>
                 right: "30px",
             }}
                 href="#" onClick={logoutFunction}>
-                <FontAwesomeIcon icon={faTimes} color={"blue"} size="2x" />
+                <FontAwesomeIcon icon={faTimes} color={"#422903"} size="2x" />
             </a>
         </li>
     </ul>

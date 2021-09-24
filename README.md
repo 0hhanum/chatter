@@ -12,6 +12,7 @@
 - react-router-dom
 - FileReader API
 - uuid (for each picture's random id)
+- gh-pages deploy
 ```
 
 ### Features
