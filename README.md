@@ -26,3 +26,35 @@
 - Able to upload image
 - Realtime update (chats, user profile ...)
 ```
+
+## Screenshots
+
+<br>
+- Authentication
+
+<br>
+
+<img width="300" alt="스크린샷 2021-12-25 오전 2 15 15" src="https://user-images.githubusercontent.com/79507291/147366564-4f16c70e-1ee9-4d7e-9699-393fcf33e632.png">
+
+<br>
+
+- Main
+
+<br>
+
+<img width="300" alt="스크린샷 2021-12-25 오전 2 15 33" src="https://user-images.githubusercontent.com/79507291/147366568-f4144b59-ed3e-415b-a99c-ad52b7f53152.png">
+
+<br>
+
+- Upload image
+
+<br>
+
+<img width="240" alt="스크린샷 2021-12-25 오전 2 15 57" src="https://user-images.githubusercontent.com/79507291/147366569-bca72920-3cfc-434d-a245-8da70deb062c.png">
+
+
+<br>
+
+<br>
+
+
